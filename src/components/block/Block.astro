@@ -1,0 +1,32 @@
+---
+import ImageGallery from "./ImageGallery.astro";
+import TextImage from "./TextImage.astro";
+import RecentItems from "./RecentItems.astro";
+import RichText from "./RichText.astro";
+import Features from "./Features.astro";
+import ShopCategories from "./ShopCategories.astro";
+import ShopProducts from "./ShopProducts.astro";
+import BookingForm from "./BookingForm.tsx";
+import ListPhone from "./ListPhone.tsx";
+import Header from "./Header.tsx";
+import Footer from "./Footer.tsx";
+const { slot, ...props } = Astro.props;
+---
+
+<section
+  class={`${props.surface || ""} ${
+    props.block_class ? props.block_class : "py-8 sm:py-20"
+  }`}
+  id={`${props.identify || ""}`}
+>
+  {props.component === "ImageGallery" && <ImageGallery {...props} />}
+  {props.component === "TextImage" && <TextImage {...props} />}
+  {props.component === "RecentItems" && <RecentItems {...props} />}
+  {props.component === "RichText" && <RichText {...props} />}
+  {props.component === "Features" && <Features {...props} />}
+  {props.component === "ShopCategories" && <ShopCategories {...props} />}
+  {props.component === "BookingForm" && <BookingForm client:load {...props} />}
+  {props.component === "ListPhone" && <ListPhone client:load {...props} />}
+  {props.component === "Header" && <Header client:load {...props} />}
+  {props.component === "Footer" && <Footer client:load {...props} />}
+</section>
