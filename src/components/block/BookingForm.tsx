@@ -51,8 +51,20 @@ const BookingForm: React.FC = () => {
         "form-name": formName,
         ...values,
       }),
-    });
+    })
+      .then(() => showSuccess())
+      .catch((error) => showError(error));
     alert("Chúng tôi đã nhận thông tin của bạn");
+  };
+  const showSuccess = () => {
+    // TODO: Show a success message or navigate to a success page.
+    console.log(`form submitted successfully`);
+  };
+
+  const showError = (error: any) => {
+    // TODO: Show an error message to the user
+    console.log(`There was an error submitting the form`);
+    console.log(error);
   };
   const [componentDisabled, setComponentDisabled] = useState<boolean>(false);
 
